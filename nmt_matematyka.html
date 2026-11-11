@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>НМТ — Математика</title>
+<style>
+:root{--a:#059669;--bg:#f6f7fb;--tx:#172033;--mu:#667085;--ln:#e5e7eb;--ok:#16a34a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+.w{max-width:1120px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+h1{margin:0;font-size:30px;letter-spacing:-.02em}.sub{color:var(--mu);margin-top:5px;max-width:760px}.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+button,.btn,a.source-link{border:1px solid var(--ln);background:#fff;border-radius:10px;padding:9px 12px;cursor:pointer;text-decoration:none;color:inherit;font:inherit}
+button.primary{background:var(--a);color:#fff;border-color:var(--a)}button.danger{color:#b42318}
+button,a{transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease,border-color .16s ease,color .16s ease}
+button:hover,a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(15,23,42,.12)}button:active,a:active{transform:translateY(0);box-shadow:0 3px 8px rgba(15,23,42,.10)}button.primary:hover{filter:brightness(.94)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{background:#fff;border:1px solid var(--ln);border-radius:16px;padding:17px;box-shadow:0 10px 28px rgba(15,23,42,.06)}h2{font-size:18px;margin:0 0 8px}.edit{outline:none;border-radius:9px;padding:4px;min-height:65px}.edit:focus{background:#fafaff;box-shadow:0 0 0 2px color-mix(in srgb,var(--a) 18%,transparent)}
+ul,ol{padding-left:20px;margin:6px 0}li{margin:5px 0}.tag{display:inline-block;background:#f1f5f9;border-radius:999px;padding:3px 8px;margin:2px 3px 2px 0;font-size:12px}.note{color:var(--mu);font-size:13px;margin-top:14px}
+.wide{grid-column:1/-1}.sourcebox{margin:0 0 14px;background:color-mix(in srgb,var(--a) 7%,white);border:1px solid color-mix(in srgb,var(--a) 22%,white);border-radius:14px;padding:13px 15px}.sourcebox b{display:block;margin-bottom:3px}.sourcebox p{margin:3px 0;color:#475467}.sourcebox .links{font-size:13px;margin-top:7px}.sourcebox .links a{color:var(--a);text-decoration:none;margin-right:8px}
+.tracker{margin-top:16px}.tracker-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:12px}.tracker-title h2{font-size:22px;margin:0}.tracker-title p{margin:3px 0 0;color:var(--mu);font-size:13px}.tracker-actions{display:flex;gap:7px;flex-wrap:wrap}
+.progress-wrap{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin:10px 0 16px}.progress{height:12px;background:#edf0f5;border-radius:999px;overflow:hidden}.progress > i{display:block;height:100%;width:0;background:var(--a);transition:width .25s ease}.progress-text{font-weight:700;font-size:13px;min-width:82px;text-align:right}
+.topic-group{background:#fff;border:1px solid var(--ln);border-radius:14px;margin:10px 0;overflow:hidden;box-shadow:0 5px 16px rgba(15,23,42,.04)}.topic-group[open]{border-color:color-mix(in srgb,var(--a) 24%,var(--ln))}.topic-group summary{list-style:none;cursor:pointer;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:750}.topic-group summary::-webkit-details-marker{display:none}.summary-left{display:flex;align-items:center;gap:10px}.chev{width:20px;height:20px;border-radius:6px;background:#f1f5f9;display:grid;place-items:center;font-size:11px;transition:transform .15s}details[open] .chev{transform:rotate(90deg)}.group-count{font-size:12px;color:var(--mu);font-weight:600}.topic-items{padding:0 12px 12px}.topic-item{display:flex;align-items:flex-start;gap:10px;padding:9px 8px;border-top:1px solid #f0f2f5;border-radius:8px}.topic-item:hover{background:#fafbfc}.topic-item input{margin-top:3px;width:17px;height:17px;accent-color:var(--a);flex:0 0 auto}.topic-item label{cursor:pointer;flex:1}.topic-item.done label{color:#667085;text-decoration:line-through;text-decoration-thickness:1px}.topic-group.hidden-incomplete{display:none}
+.group-master{width:17px;height:17px;accent-color:var(--a);cursor:pointer}.filter-on{background:color-mix(in srgb,var(--a) 10%,white);border-color:color-mix(in srgb,var(--a) 35%,var(--ln));color:var(--a)}
+.context-card{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.context-card p{margin:0;color:#475467;max-width:720px}.context-card .actions{justify-content:flex-start}
+@media(max-width:760px){.grid{grid-template-columns:1fr}header{flex-direction:column}.actions{justify-content:flex-start}.w{padding:14px}}
+</style>
+</head>
+<body><div class="w">
+<header>
+<div><h1>НМТ — Математика</h1><div class="sub">Редагований план: 1 година точкової роботи + щотижневий пробник.</div></div>
+<div class="actions">
+<a class="btn" href="index.html">← StudyBase</a>
+<button class="primary" id="save">Зберегти</button>
+<button id="copyCtx">Копіювати контекст</button>
+<button id="exportJson">Експорт JSON</button>
+<button id="exportTxt">Експорт TXT</button>
+<button id="reset" class="danger">Скинути план</button>
+</div>
+</header>
+
+<div class="sourcebox">
+<b>Джерело програми · актуалізовано 10.11.2026</b>
+<p>Офіційні 6 тематичних розділів — УЦОЯО, НМТ-2026. Підтеми — робоча деталізація змісту програми ЗНО для зручного відстеження.</p>
+<div class="links"><a href="https://testportal.gov.ua/matematyka-2026/" target="_blank" rel="noopener">УЦОЯО: Математика НМТ-2026</a> · <a href="https://testportal.gov.ua/progmath/" target="_blank" rel="noopener">УЦОЯО: Програма ЗНО з математики</a> · <a href="https://lv.testportal.gov.ua/?p=3206" target="_blank" rel="noopener">ЛРЦОЯО: тематичне тестування 2026</a></div>
+</div>
+
+<div class="grid"><section class="card"><h2>Домовлений обсяг</h2><div class="edit" contenteditable="true"><p><span class="tag">1 год цільової роботи</span><span class="tag">+ 1 пробник щотижня</span></p><p>Пробник не входить у цю годину; його точна тривалість не була зафіксована.</p></div></section>
+<section class="card"><h2>Поточний профіль</h2><div class="edit" contenteditable="true"><ul><li>Раніше пробники — майже стабільно 180+.</li><li>Головна проблема — неуважність і арифметика.</li><li>Іноді випадає теорія у «правильне/неправильне».</li><li>Параметри потребують точкової роботи.</li></ul></div></section>
+<section class="card"><h2>Щотижневий цикл</h2><div class="edit" contenteditable="true"><ol><li>Пробник.</li><li>Класифікувати кожну втрату бала.</li><li>Вибрати 1 слабку тему.</li><li>У годинній сесії: параметр на прикладі або слабка тема.</li></ol></div></section>
+<section class="card"><h2>1 година фокусу</h2><div class="edit" contenteditable="true"><ul><li>≈30 хв — параметр/нестандартний тип.</li><li>≈30 хв — слабка тема з останнього пробника.</li></ul><p>Якщо прогалина серйозна — вся година йде на неї.</p></div></section>
+<section class="card"><h2>Контроль неуважності</h2><div class="edit" contenteditable="true"><ul><li>Відділяти арифметичні помилки від незнання теми.</li><li>Після пробника рахувати втрати саме через неуважність.</li><li>Для повторюваних помилок вводити конкретний чек перед відповіддю.</li></ul></div></section>
+<section class="card"><h2>Приблизна хронологія</h2><div class="edit" contenteditable="true"><ol><li>Відновити щотижневі пробники.</li><li>Через 2–3 пробники сформувати реальний список слабких тем.</li><li>Паралельно — параметри малими порціями.</li><li>Далі — лише точкове повторення того, що реально просідає.</li></ol></div></section>
+<section class="card"><h2>Місце в тижні</h2><div class="edit" contenteditable="true"><ul><li>Пт — 1 год фокусної математики.</li><li>Нд зранку — пробник як перший великий блок; тривалість ставити за фактичним форматом.</li></ul></div></section>
+<section class="card"><h2>Час у загальному тижні</h2><div class="edit" contenteditable="true"><ul>
+<li><b>Пт 20:00–21:00</b> — параметр або слабка тема з останнього пробника.</li>
+<li><b>Нд 08:30–09:45</b> — слот для щотижневого пробника та короткого розбору. Це календарний слот, а не твердження про офіційну тривалість НМТ.</li>
+</ul></div></section></div>
+
+<section class="card wide tracker">
+<div class="tracker-head">
+  <div class="tracker-title"><h2>Теми й підтеми програми</h2><p>Позначай пункт після того, як реально опрацював його теорію і базову практику.</p></div>
+  <div class="tracker-actions">
+    <button id="toggleIncomplete">Лише не опрацьовані</button>
+    <button id="expandAll">Розгорнути все</button>
+    <button id="collapseAll">Згорнути все</button>
+    <button id="resetTopics" class="danger">Скинути позначки</button>
+  </div>
+</div>
+<div class="progress-wrap"><div class="progress"><i id="progressBar"></i></div><div class="progress-text" id="progressText">0 / 0</div></div>
+<div id="topicList"></div>
+</section>
+
+<section class="card wide context-card">
+<div><h2>Знімок контексту для нового НМТ-чату</h2><p>Кнопка «Копіювати контекст» збирає поточний план, час занять, список опрацьованих/неопрацьованих тем, відсоток прогресу й джерела в один текст. Його можна вставити в новий чат після того, як старий стане занадто довгим.</p></div>
+<div class="actions"><button class="primary" id="copyCtx2">Копіювати контекст</button><button id="exportJson2">Зберегти знімок JSON</button></div>
+</section>
+
+<div class="note" id="savedInfo">План і прогрес зберігаються локально у браузері.</div>
+</div>
+
+<script>
+const PLAN_KEY="nmt_math_v2";
+const TRACK_KEY="nmt_math_topics_v1";
+const SUBJECT="НМТ — Математика";
+const TOPICS=[{"id": "numbers", "title": "Числа і вирази", "items": [["num_sets", "Натуральні, цілі, раціональні та дійсні числа; порівняння й обчислення"], ["num_frac", "Звичайні та десяткові дроби, відношення, пропорції, відсотки"], ["num_abs", "Модуль числа та виразу"], ["num_alg", "Алгебраїчні вирази, тотожні перетворення, формули скороченого множення"], ["num_poly", "Одночлени, многочлени, розкладання на множники"], ["num_rat", "Раціональні дроби й область допустимих значень"], ["num_pow", "Степені, корені та степінь із раціональним показником"], ["num_trig", "Тригонометричні вирази та основні тотожності"], ["num_exp_log", "Показникові й логарифмічні вирази, властивості логарифмів"]]}, {"id": "equations", "title": "Рівняння, нерівності та їх системи", "items": [["eq_linear_quad", "Лінійні, квадратні та зведені до них рівняння"], ["eq_rational", "Раціональні рівняння та нерівності"], ["eq_irrational", "Ірраціональні рівняння та нерівності"], ["eq_abs", "Рівняння та нерівності з модулем"], ["eq_exp", "Показникові рівняння та нерівності"], ["eq_log", "Логарифмічні рівняння та нерівності"], ["eq_trig", "Тригонометричні рівняння та нерівності"], ["eq_systems", "Системи рівнянь і нерівностей"], ["eq_word", "Текстові задачі, що зводяться до рівнянь / систем"], ["eq_param", "Рівняння, нерівності та системи з параметром — окремий тренувальний напрям"]]}, {"id": "functions", "title": "Функції", "items": [["fun_basic", "Поняття функції, область визначення й значень, нулі, проміжки знакопостійності"], ["fun_props", "Парність, періодичність, монотонність, екстремуми"], ["fun_graph", "Графіки та перетворення графіків функцій"], ["fun_elem", "Лінійна, квадратична, степенева та обернена пропорційність"], ["fun_exp_log", "Показникова та логарифмічна функції"], ["fun_trig", "Тригонометричні функції"], ["fun_seq", "Числові послідовності, арифметична й геометрична прогресії"], ["fun_deriv", "Похідна, її геометричний і фізичний зміст, дослідження функцій"], ["fun_integral", "Первісна й визначений інтеграл; площа криволінійної трапеції"]]}, {"id": "prob", "title": "Комбінаторика, теорія ймовірностей та статистика", "items": [["prob_comb", "Основні правила комбінаторики; перестановки, розміщення, комбінації"], ["prob_classic", "Класичне означення ймовірності та прості події"], ["prob_stats", "Середнє значення, медіана, мода, розмах і вибіркові характеристики"], ["prob_graphs", "Таблиці, діаграми й графіки статистичних даних"]]}, {"id": "planimetry", "title": "Планіметрія", "items": [["pl_lines", "Прямі, промені, відрізки, кути; паралельність і перпендикулярність"], ["pl_tri", "Трикутники: ознаки рівності, властивості, медіани, бісектриси, висоти"], ["pl_right", "Прямокутний трикутник, теорема Піфагора, тригонометрія в трикутнику"], ["pl_similar", "Подібність трикутників і пропорційні відрізки"], ["pl_quad", "Чотирикутники: паралелограм, прямокутник, ромб, квадрат, трапеція"], ["pl_poly", "Многокутники та правильні многокутники"], ["pl_circle", "Коло й круг, хорди, дотичні, січні, вписані та центральні кути"], ["pl_inscribed", "Вписані й описані трикутники та чотирикутники"], ["pl_coords", "Координати й вектори на площині"], ["pl_area", "Периметри й площі плоских фігур"]]}, {"id": "stereo", "title": "Стереометрія", "items": [["st_lines_planes", "Прямі та площини в просторі; паралельність і перпендикулярність"], ["st_angles", "Кути й відстані в просторі"], ["st_prism", "Призма та паралелепіпед"], ["st_pyramid", "Піраміда та зрізана піраміда"], ["st_cylinder", "Циліндр"], ["st_cone", "Конус і зрізаний конус"], ["st_sphere", "Куля і сфера"], ["st_area_volume", "Площі поверхонь та об’єми просторових тіл"], ["st_coords", "Координати й вектори у просторі"]]}];
+const SOURCES=[{"label": "УЦОЯО: Математика НМТ-2026", "url": "https://testportal.gov.ua/matematyka-2026/"}, {"label": "УЦОЯО: Програма ЗНО з математики", "url": "https://testportal.gov.ua/progmath/"}, {"label": "ЛРЦОЯО: тематичне тестування 2026", "url": "https://lv.testportal.gov.ua/?p=3206"}];
+const SOURCE_DATE="2026-11-10";
+
+const edits=[...document.querySelectorAll('.edit')];
+const initialEdits=edits.map(e=>e.innerHTML);
+const savedPlan=JSON.parse(localStorage.getItem(PLAN_KEY)||'null');
+if(Array.isArray(savedPlan)) edits.forEach((e,i)=>{ if(savedPlan[i]!=null) e.innerHTML=savedPlan[i]; });
+
+let trackerState=JSON.parse(localStorage.getItem(TRACK_KEY)||'{}');
+let incompleteOnly=false;
+
+function savePlan(silent=false){
+  localStorage.setItem(PLAN_KEY, JSON.stringify(edits.map(e=>e.innerHTML)));
+  localStorage.setItem(TRACK_KEY, JSON.stringify(trackerState));
+  localStorage.setItem(TRACK_KEY+"_updated", new Date().toISOString());
+  updateSavedInfo();
+  if(!silent) flash(document.getElementById('save'),'Збережено');
+}
+edits.forEach(e=>e.addEventListener('input',()=>savePlan(true)));
+
+function allItems(){
+  return TOPICS.flatMap(g=>g.items.map(([id,label])=>({id,label,group:g.title})));
+}
+function updateSavedInfo(){
+  const raw=localStorage.getItem(TRACK_KEY+"_updated");
+  document.getElementById('savedInfo').textContent = raw
+    ? "План і прогрес зберігаються локально. Остання зміна: "+new Date(raw).toLocaleString("uk-UA")
+    : "План і прогрес зберігаються локально у браузері.";
+}
+function renderTopics(){
+  const root=document.getElementById('topicList');
+  root.innerHTML="";
+  TOPICS.forEach(group=>{
+    const items=group.items;
+    const doneCount=items.filter(([id])=>!!trackerState[id]).length;
+    if(incompleteOnly && doneCount===items.length) return;
+    const det=document.createElement('details');
+    det.className='topic-group';
+    det.open=true;
+    const summary=document.createElement('summary');
+    summary.innerHTML=`<span class="summary-left"><span class="chev">›</span><input class="group-master" type="checkbox" aria-label="Позначити всю тему"><span>${escapeHtml(group.title)}</span></span><span class="group-count">${doneCount} / ${items.length}</span>`;
+    const master=summary.querySelector('.group-master');
+    master.checked=doneCount===items.length && items.length>0;
+    master.indeterminate=doneCount>0 && doneCount<items.length;
+    master.addEventListener('click',ev=>ev.stopPropagation());
+    master.addEventListener('change',()=>{
+      items.forEach(([id])=>trackerState[id]=master.checked);
+      savePlan(true); renderTopics();
+    });
+    det.appendChild(summary);
+    const list=document.createElement('div'); list.className='topic-items';
+    items.forEach(([id,label])=>{
+      if(incompleteOnly && trackerState[id]) return;
+      const row=document.createElement('div'); row.className='topic-item'+(trackerState[id]?' done':'');
+      const cb=document.createElement('input'); cb.type='checkbox'; cb.id='topic_'+id; cb.checked=!!trackerState[id];
+      const lab=document.createElement('label'); lab.htmlFor=cb.id; lab.textContent=label;
+      cb.addEventListener('change',()=>{trackerState[id]=cb.checked;savePlan(true);renderTopics();});
+      row.append(cb,lab); list.appendChild(row);
+    });
+    det.appendChild(list); root.appendChild(det);
+  });
+  updateProgress();
+}
+function updateProgress(){
+  const items=allItems(), done=items.filter(x=>trackerState[x.id]).length, total=items.length;
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('progressBar').style.width=pct+"%";
+  document.getElementById('progressText').textContent=`${done} / ${total} · ${pct}%`;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function flash(btn,text){const old=btn.textContent;btn.textContent=text;setTimeout(()=>btn.textContent=old,1000);}
+function planSections(){
+  const hs=[...document.querySelectorAll('.grid .card h2')];
+  return edits.map((e,i)=>({title:hs[i]?.innerText||("Розділ "+(i+1)), text:e.innerText.trim(), html:e.innerHTML}));
+}
+function snapshot(){
+  const items=allItems(), done=items.filter(x=>trackerState[x.id]);
+  return {
+    subject:SUBJECT,
+    source_updated:SOURCE_DATE,
+    saved_at:new Date().toISOString(),
+    plan_sections:planSections(),
+    progress:{done:done.length,total:items.length,percent:items.length?Math.round(done.length/items.length*100):0},
+    topics:TOPICS.map(g=>({group:g.title,items:g.items.map(([id,label])=>({id,label,done:!!trackerState[id]}))})),
+    sources:SOURCES
+  };
+}
+function contextText(){
+  const s=snapshot();
+  let out=`${s.subject}\nДжерело StudyBase · актуалізовано: ${s.source_updated}\nПрогрес програми: ${s.progress.done}/${s.progress.total} (${s.progress.percent}%)\n\nПЛАН ПІДГОТОВКИ\n`;
+  s.plan_sections.forEach(x=>out+=`\n## ${x.title}\n${x.text}\n`);
+  out+="\nТЕМИ Й ПІДТЕМИ\n";
+  s.topics.forEach(g=>{out+=`\n### ${g.group}\n`;g.items.forEach(x=>out+=`${x.done?"[✓]":"[ ]"} ${x.label}\n`);});
+  out+="\nДЖЕРЕЛА\n"; s.sources.forEach(x=>out+=`- ${x.label}: ${x.url}\n`);
+  return out;
+}
+async function copyContext(btn){
+  const text=contextText();
+  try{await navigator.clipboard.writeText(text);flash(btn,"Скопійовано");}
+  catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();flash(btn,"Скопійовано");}
+}
+function download(name,content,type){
+  const bl=new Blob([content],{type}),a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=name;a.click();URL.revokeObjectURL(a.href);
+}
+document.getElementById('save').onclick=()=>savePlan();
+document.getElementById('copyCtx').onclick=e=>copyContext(e.currentTarget);
+document.getElementById('copyCtx2').onclick=e=>copyContext(e.currentTarget);
+document.getElementById('exportJson').onclick=()=>download(SUBJECT.replaceAll(' ','_')+'_snapshot.json',JSON.stringify(snapshot(),null,2),'application/json;charset=utf-8');
+document.getElementById('exportJson2').onclick=()=>download(SUBJECT.replaceAll(' ','_')+'_snapshot.json',JSON.stringify(snapshot(),null,2),'application/json;charset=utf-8');
+document.getElementById('exportTxt').onclick=()=>download(SUBJECT.replaceAll(' ','_')+'_context.txt',contextText(),'text/plain;charset=utf-8');
+document.getElementById('reset').onclick=()=>{if(confirm('Повернути початковий текст плану? Позначки тем не зміняться.')){edits.forEach((e,i)=>e.innerHTML=initialEdits[i]);savePlan();}};
+document.getElementById('resetTopics').onclick=()=>{if(confirm('Скинути всі позначки опрацьованих тем?')){trackerState={};savePlan(true);renderTopics();}};
+document.getElementById('toggleIncomplete').onclick=e=>{incompleteOnly=!incompleteOnly;e.currentTarget.classList.toggle('filter-on',incompleteOnly);e.currentTarget.textContent=incompleteOnly?'Показати всі':'Лише не опрацьовані';renderTopics();};
+document.getElementById('expandAll').onclick=()=>document.querySelectorAll('.topic-group').forEach(d=>d.open=true);
+document.getElementById('collapseAll').onclick=()=>document.querySelectorAll('.topic-group').forEach(d=>d.open=false);
+
+renderTopics();updateSavedInfo();
+</script>
+</body></html>
